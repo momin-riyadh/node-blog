@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
+const morgan = require("morgan");
 
 const db = require("./models");
 
@@ -16,7 +17,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-db.sequelize.sync({ alter: true }).then((conn) => {
+db.sequelize.sync({ force: true }).then((conn) => {
   console.log("yes re-sync done!");
 
   console.log(
@@ -24,15 +25,20 @@ db.sequelize.sync({ alter: true }).then((conn) => {
   );
 });
 
-// if (process.env.NODE_ENV === "development") {
-// app.use(morgan("dev"));
-// }
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
 
-app.use(require("./routes/index"));
+app.use(require("./routes"));
+
+app.use(require("./routes/user"));
+app.use("/api", require("./routes/user/api"));
+
+app.use(require("./routes/post/"));
+app.use("/api", require("./routes/post/api"));
 
 app.get("*", (req, res) => {
-  const url = req.originalUrl;
-  res.status(404).render("not-found", { url });
+  res.status(404).render("not-found", { url: req.originalUrl });
 });
 
 app.listen(port, () =>

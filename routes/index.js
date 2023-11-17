@@ -1,8 +1,11 @@
 const express = require("express");
-const db = require("../models");
+
+const { models, Sequelize } = require("../models");
 
 const router = new express.Router();
 
-router.get("", async (req, res) => {});
+router.get("/", (req, res) => {
+  res.render("home");
+});
 
 module.exports = router;

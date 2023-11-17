@@ -1,4 +1,6 @@
 const { Sequelize, DataTypes } = require("sequelize");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const dbConfig = require("../config/db");
 
@@ -24,7 +26,18 @@ db.sequelize = sequelize;
 db.models.User = require("./user")(sequelize, DataTypes);
 db.models.Token = require("./token")(sequelize, DataTypes);
 
-db.models.User.hasMany(db.models.Token, { as: "tokens", onDelete: "CASCADE" });
+// HOOK
+db.models.User.beforeCreate(async (user, options) => {
+  const salt = await bcrypt.genSalt(10);
+  user.password = await bcrypt.hash(user.password, salt);
+});
+
+// ASSOXIATION
+db.models.User.hasMany(db.models.Token, {
+  foreignKey: "user_id",
+  as: "tokens",
+  onDelete: "CASCADE",
+});
 db.models.Token.belongsTo(db.models.User, { foreignKey: "user_id" });
 
 module.exports = db;

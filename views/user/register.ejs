@@ -1,0 +1,52 @@
+<p class="error-message"><%= errorMessage %></p>
+<form method="post" action="<%= actionRoute %>">
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input
+      class="<%= errors?.firstName ? 'input-error' : '' %>"
+      type="text"
+      name="firstName"
+      value="<%= fields.firstName %>"
+      placeholder="First Name"
+    />
+    <span class="input-error-message"><%= errors?.firstName %></span>
+  </div>
+
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input
+      class="<%= errors?.lastName ? 'input-error' : '' %>"
+      type="text"
+      name="lastName"
+      value="<%= fields.lastName %>"
+      placeholder="Last Name"
+    />
+    <span class="input-error-message"><%= errors?.lastName %></span>
+  </div>
+
+  <div class="form-group">
+    <label for="email">email</label>
+    <input
+      class="<%= errors?.email ? 'input-error' : '' %>"
+      type="text"
+      name="email"
+      value="<%= fields.email %>"
+      placeholder="Email"
+    />
+    <span class="input-error-message"><%= errors?.email %></span>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      class="<%= errors?.password ? 'input-error' : '' %>"
+      type="text"
+      name="password"
+      value="<%= fields.password %>"
+      placeholder="Password"
+    />
+    <span class="input-error-message"><%= errors?.password %></span>
+  </div>
+
+  <button type="submit">Register</button>
+</form>

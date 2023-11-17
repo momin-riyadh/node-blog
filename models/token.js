@@ -1,8 +1,14 @@
 module.exports = (sequelize, DataTypes) => {
-  return sequelize.define("Token", {
-    token: {
-      type: DataTypes.STRING,
-      allowNull: false,
+  return sequelize.define(
+    "Token",
+    {
+      token: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
     },
-  });
+    {
+      timestamps: false,
+    }
+  );
 };
