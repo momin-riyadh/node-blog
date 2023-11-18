@@ -11878,10 +11878,11 @@ textarea.form-control-lg {
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 .g-user-reg-main form {
-  padding: 2rem;
+  padding: 0 2rem 2rem;
 }
 .g-user-reg-main form label {
   color: white;
+  display: block;
 }
 .g-user-reg-main form input {
   background-color: transparent;
