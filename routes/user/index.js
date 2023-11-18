@@ -115,7 +115,7 @@ router.get("/user/login", (req, res) => {
 
   const actionRoute = redirect
     ? `/user/login?redirect=${redirect}`
-    : "/user/login-";
+    : "/user/login";
 
   res.render("user/login", {
     actionRoute,

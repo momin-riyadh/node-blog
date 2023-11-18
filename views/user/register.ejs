@@ -27,7 +27,7 @@
                       class="<%= errors?.firstName ? 'input-error form-control text-white' : ' form-control text-white' %>"
                       type="text"
                       name="firstName"
-                      value="<%= fields.firstName %>"
+                      value="<%= values.firstName %>"
                       placeholder="First Name"
                     />
                   </label>
@@ -43,7 +43,7 @@
                       class="<%= errors?.lastName ? 'input-error form-control text-white' : ' form-control text-white' %>"
                       type="text"
                       name="lastName"
-                      value="<%= fields.lastName %>"
+                      value="<%= values.lastName %>"
                       placeholder="Last Name"
                     />
                   </label>
@@ -60,7 +60,7 @@
                       class="<%= errors?.email ? 'input-error form-control text-white' : ' form-control text-white' %>"
                       type="text"
                       name="email"
-                      value="<%= fields.email %>"
+                      value="<%= values.email %>"
                       placeholder="Email"
                     />
                   </label>
@@ -74,9 +74,9 @@
                     >
                     <input
                       class="<%= errors?.password ? 'input-error form-control text-white' : ' form-control text-white' %>"
-                      type="text"
+                      type="password"
                       name="password"
-                      value="<%= fields.password %>"
+                      value="<%= values.password %>"
                       placeholder="Password"
                     />
                   </label>
