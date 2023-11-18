@@ -1,3 +1,5 @@
+<h1>Register</h1>
+
 <p class="error-message"><%= errorMessage %></p>
 <form method="post" action="<%= actionRoute %>">
   <div class="form-group">
@@ -6,7 +8,7 @@
       class="<%= errors?.firstName ? 'input-error' : '' %>"
       type="text"
       name="firstName"
-      value="<%= fields.firstName %>"
+      value="<%= values.firstName %>"
       placeholder="First Name"
     />
     <span class="input-error-message"><%= errors?.firstName %></span>
@@ -18,7 +20,7 @@
       class="<%= errors?.lastName ? 'input-error' : '' %>"
       type="text"
       name="lastName"
-      value="<%= fields.lastName %>"
+      value="<%= values.lastName %>"
       placeholder="Last Name"
     />
     <span class="input-error-message"><%= errors?.lastName %></span>
@@ -30,7 +32,7 @@
       class="<%= errors?.email ? 'input-error' : '' %>"
       type="text"
       name="email"
-      value="<%= fields.email %>"
+      value="<%= values.email %>"
       placeholder="Email"
     />
     <span class="input-error-message"><%= errors?.email %></span>
@@ -42,7 +44,7 @@
       class="<%= errors?.password ? 'input-error' : '' %>"
       type="text"
       name="password"
-      value="<%= fields.password %>"
+      value="<%= values.password %>"
       placeholder="Password"
     />
     <span class="input-error-message"><%= errors?.password %></span>

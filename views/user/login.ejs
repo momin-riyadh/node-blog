@@ -1,11 +1,30 @@
-<div>
-  <div>
+<h1>Login</h1>
+
+<p class="error-message"><%= errorMessage %></p>
+<form method="post" action="<%= actionRoute %>">
+  <div class="form-group">
     <label for="email">email</label>
-    <input type="text" name="email" placeholder="Email" />
+    <input
+      class="<%= errors?.email ? 'input-error' : '' %>"
+      type="text"
+      name="email"
+      value="<%= values.email %>"
+      placeholder="Email"
+    />
+    <span class="input-error-message"><%= errors?.email %></span>
   </div>
 
-  <div>
+  <div class="form-group">
     <label for="password">Password</label>
-    <input type="text" name="password" placeholder="Password" />
+    <input
+      class="<%= errors?.password ? 'input-error' : '' %>"
+      type="text"
+      name="password"
+      value="<%= values.password %>"
+      placeholder="Password"
+    />
+    <span class="input-error-message"><%= errors?.password %></span>
   </div>
-</div>
+
+  <button type="submit">Login</button>
+</form>
