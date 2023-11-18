@@ -11855,5 +11855,67 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.g-user-reg-area {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  width: 100%;
+  background-image: url("../images/user-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(47, 44, 44, 0.95);
+  background-blend-mode: multiply;
+}
+
+.g-user-reg-main {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.g-user-reg-main form {
+  padding: 0 2rem 2rem;
+}
+.g-user-reg-main form label {
+  color: white;
+  display: block;
+}
+.g-user-reg-main form input {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+}
+.g-user-reg-main form input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+}
+.g-user-reg-main form input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  line-height: 1em;
+}
+.g-user-reg-main form input::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  line-height: 1em;
+}
+.g-user-reg-main form input:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  line-height: 1em;
+}
+.g-user-reg-main form input:-moz-placeholder { /* Firefox 18- */
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  line-height: 1em;
+}
+.g-user-reg-main form input:focus {
+  background: transparent;
+  outline: none;
+}
 
 /*# sourceMappingURL=style.css.map */
