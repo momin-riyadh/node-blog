@@ -11888,20 +11888,29 @@ textarea.form-control-lg {
   border: 1px solid rgba(255, 255, 255, 0.5);
   color: #ffffff;
 }
-.g-user-reg-main form input::placeholder { /* Chrome/Opera/Safari *
-  color: #ffffff;
+.g-user-reg-main form input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
 }
-&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #ffffff;
+.g-user-reg-main form input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  line-height: 1em;
 }
 .g-user-reg-main form input::-moz-placeholder { /* Firefox 19+ */
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  line-height: 1em;
 }
 .g-user-reg-main form input:-ms-input-placeholder { /* IE 10+ */
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  line-height: 1em;
 }
 .g-user-reg-main form input:-moz-placeholder { /* Firefox 18- */
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  line-height: 1em;
 }
 .g-user-reg-main form input:focus {
   background: transparent;
