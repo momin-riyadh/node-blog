@@ -11,6 +11,7 @@ module.exports.authenticate = async (req, res, next) => {
     req.isAuthenticated = () => {
       return false;
     };
+
     return next();
   }
 
@@ -29,11 +30,12 @@ module.exports.authenticate = async (req, res, next) => {
       throw new Error();
     }
 
+    req.user = user;
+    req.token = token;
     req.isAuthenticated = () => {
       return true;
     };
-    req.user = user;
-    req.token = token;
+
     return next();
   } catch (error) {
     req.user = null;
@@ -54,4 +56,12 @@ module.exports.isLoggedIn = (req, res, next) => {
   }
 
   res.redirect(redirect);
+};
+
+module.exports.isNotLoggedIn = (req, res, next) => {
+  if (!req.isAuthenticated()) {
+    return next();
+  }
+
+  res.redirect("/");
 };

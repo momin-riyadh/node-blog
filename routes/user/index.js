@@ -4,11 +4,11 @@ const bcrypt = require("bcryptjs");
 const { models, Sequelize } = require("../../models");
 const generateAuthToken = require("../../utilities/generateAuthToken");
 const { isEmail, isStrongPassword } = require("../../utilities/validator");
-const { isLoggedIn } = require("../../middleware/auth");
+const { isLoggedIn, isNotLoggedIn } = require("../../middleware/auth");
 
 const router = new express.Router();
 
-router.get("/user/register", (req, res) => {
+router.get("/user/register", isNotLoggedIn, (req, res) => {
   const redirect = req.query.redirect;
   const actionRoute = `/user/register${
     redirect ? "?redirect=" + redirect : ""
@@ -22,7 +22,7 @@ router.get("/user/register", (req, res) => {
   });
 });
 
-router.post("/user/register", async (req, res) => {
+router.post("/user/register", isNotLoggedIn, async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
   const redirect = req.query.redirect;
@@ -110,7 +110,7 @@ router.post("/user/register", async (req, res) => {
   }
 });
 
-router.get("/user/login", (req, res) => {
+router.get("/user/login", isNotLoggedIn, (req, res) => {
   const redirect = req.query.redirect;
 
   const actionRoute = redirect
@@ -125,7 +125,7 @@ router.get("/user/login", (req, res) => {
   });
 });
 
-router.post("/user/login", async (req, res) => {
+router.post("/user/login", isNotLoggedIn, async (req, res) => {
   const { email, password: enteredPassword } = req.body;
 
   const redirect = req.query.redirect;
