@@ -6,7 +6,7 @@
   <body>
     Login
     <p class="error-message"><%= errorMessage %></p>
-    <form method="post" action="<%= actionRoute %>">
+    <form method="post" action="/user/login<%= redirect %>">
       <div class="form-group">
         <label for="email">email</label>
         <input
@@ -32,6 +32,11 @@
       </div>
 
       <button type="submit">Login</button>
+
+      <p>
+        New user?
+        <a href="/user/register<%= redirect %>">Login</a>
+      </p>
     </form>
   </body>
 </html>

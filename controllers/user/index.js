@@ -5,13 +5,11 @@ const generateAuthToken = require("../../utilities/generateAuthToken");
 const { isEmail, isStrongPassword } = require("../../utilities/validator");
 
 module.exports.getUserRegister = (req, res) => {
-  const redirect = req.query.redirect;
-  const actionRoute = `/user/register${
-    redirect ? "?redirect=" + redirect : ""
-  }`;
+  const origin = req.query.redirect;
+  const redirect = origin ? "?redirect=" + origin : "";
 
   res.render("user/register", {
-    actionRoute,
+    redirect,
     errorMessage: "",
     errors: {},
     values: { firstName: "", lastName: "", email: "", password: "" },
@@ -21,11 +19,8 @@ module.exports.getUserRegister = (req, res) => {
 module.exports.postUserRegister = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
-  const redirect = req.query.redirect;
-
-  const actionRoute = redirect
-    ? `/user/register?redirect=${redirect}`
-    : "/user/register";
+  const origin = req.query.redirect;
+  const redirect = origin ? "?redirect=" + origin : "";
 
   // VALIDATION
   let errors = {};
@@ -59,7 +54,7 @@ module.exports.postUserRegister = async (req, res) => {
 
   if (Object.keys(errors).length > 0) {
     return res.status(400).render("user/register", {
-      actionRoute,
+      redirect,
       errorMessage: "User validation failed",
       errors,
       values: { firstName, lastName, email, password },
@@ -71,7 +66,7 @@ module.exports.postUserRegister = async (req, res) => {
 
     if (existingUser) {
       return res.status(409).render("user/register", {
-        actionRoute,
+        redirect,
         errorMessage: "User already exists. Please choose a different one",
         errors,
         values: { firstName, lastName, email, password },
@@ -95,10 +90,10 @@ module.exports.postUserRegister = async (req, res) => {
       maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
     });
 
-    res.redirect(redirect || "/");
+    res.redirect(origin || "/");
   } catch (error) {
     res.status(500).render("user/register", {
-      actionRoute,
+      redirect,
       errorMessage: "Something went wrong",
       errors,
       values: { firstName, lastName, email, password },
@@ -107,14 +102,11 @@ module.exports.postUserRegister = async (req, res) => {
 };
 
 module.exports.getUserLogin = (req, res) => {
-  const redirect = req.query.redirect;
-
-  const actionRoute = redirect
-    ? `/user/login?redirect=${redirect}`
-    : "/user/login";
+  const origin = req.query.redirect;
+  const redirect = origin ? "?redirect=" + origin : "";
 
   res.render("user/login", {
-    actionRoute,
+    redirect,
     errorMessage: "",
     errors: {},
     values: { email: "", password: "" },
@@ -124,11 +116,8 @@ module.exports.getUserLogin = (req, res) => {
 module.exports.postUserLogin = async (req, res) => {
   const { email, password: enteredPassword } = req.body;
 
-  const redirect = req.query.redirect;
-
-  const actionRoute = redirect
-    ? `/user/login?redirect=${redirect}`
-    : "/user/login";
+  const origin = req.query.redirect;
+  const redirect = origin ? "?redirect=" + origin : "";
 
   // VALIDATION
   let errors = {};
@@ -141,7 +130,7 @@ module.exports.postUserLogin = async (req, res) => {
 
   if (Object.keys(errors).length > 0) {
     return res.status(400).render("user/login", {
-      actionRoute,
+      redirect,
       errorMessage: "Please fill in missing fields",
       errors,
       values: { email, password: enteredPassword },
@@ -153,7 +142,7 @@ module.exports.postUserLogin = async (req, res) => {
 
     if (!user) {
       return res.status(400).render("user/login", {
-        actionRoute,
+        redirect,
         errorMessage: "Invalid email or password",
         errors,
         values: { email, password: enteredPassword },
@@ -164,7 +153,7 @@ module.exports.postUserLogin = async (req, res) => {
 
     if (!isMatch) {
       return res.status(400).render("user/login", {
-        actionRoute,
+        redirect,
         errorMessage: "Invalid email or password",
         errors,
         values: { email, password: enteredPassword },
@@ -181,10 +170,10 @@ module.exports.postUserLogin = async (req, res) => {
       maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
     });
 
-    res.redirect(redirect || "/");
+    res.redirect(origin || "/");
   } catch (error) {
     res.status(500).render("user/login", {
-      actionRoute,
+      redirect,
       errorMessage: "Something went wrong",
       errors,
       values: { email, password: enteredPassword },

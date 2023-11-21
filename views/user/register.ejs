@@ -12,7 +12,7 @@
               <h3 class="text-white">User Registrations</h3>
             </div>
             <div class="g-user-reg-main">
-              <form method="post" action="<%= actionRoute %>">
+              <form method="post" action="/user/register<%= redirect %>">
                 <div class="text-center pt-3">
                   <p class="error-message text-danger"><%= errorMessage %></p>
                 </div>
@@ -85,6 +85,10 @@
                 <button class="btn btn-outline-light w-100 mt-3" type="submit">
                   Register
                 </button>
+                <p>
+                  Have an account?
+                  <a href="/user/login<%= redirect %>">Login</a>
+                </p>
               </form>
             </div>
           </div>
