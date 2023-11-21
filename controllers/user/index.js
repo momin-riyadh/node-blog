@@ -72,7 +72,7 @@ module.exports.postUserRegister = async (req, res) => {
     if (existingUser) {
       return res.status(409).render("user/register", {
         actionRoute,
-        errorMessage: "User already exists. Please choose a different one.",
+        errorMessage: "User already exists. Please choose a different one",
         errors,
         values: { firstName, lastName, email, password },
       });

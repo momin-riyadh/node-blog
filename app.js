@@ -35,7 +35,7 @@ if (process.env.NODE_ENV === "development") {
 
 app.use(authenticate);
 
-// SEND DATA TO LOCAL FOR ALL ROUTE
+// SEND USER DATA TO LOCAL FOR ALL ROUTE
 app.use("*", (req, res, next) => {
   if (req.isAuthenticated()) {
     res.locals.user = req.user;
