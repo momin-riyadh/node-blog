@@ -1,16 +1,4 @@
+<%- include ('../partials/navigation')%>
+
 <h1>User Profile <%= user?.full_name %></h1>
-<button data-logout-btn>logout</button>
-<script>
-  const btnLogout = document.querySelector("[data-logout-btn]");
-
-  btnLogout.addEventListener("click", async () => {
-    await fetch("/api/user/logout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    window.location.href = "/user/login";
-  });
-</script>
+<span>Email: <%= user?.email %></span>

@@ -1,0 +1,38 @@
+<div>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <%if(!user){%>
+    <li>
+      <a href="/user/login">Login</a>
+    </li>
+    <li>
+      <a href="/user/register">register</a>
+    </li>
+    <%}%>
+  </ul>
+
+  <%if(user){%>
+  <div>
+    <h1><%= user.full_name %></h1>
+    <a href="/user/profile">profile</a>
+    <button data-logout-btn>logout</button>
+  </div>
+  <%}%>
+</div>
+
+<script>
+  const btnLogout = document.querySelector("[data-logout-btn]");
+
+  btnLogout.addEventListener("click", async () => {
+    await fetch("/api/user/logout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    window.location.href = "/user/login";
+  });
+</script>
