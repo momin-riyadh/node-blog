@@ -87,7 +87,7 @@ module.exports.postUserRegister = async (req, res) => {
       httpOnly: true,
       secure: process.env.NODE_ENV !== "development", // Use secure cookies in production
       sameSite: "strict", // Prevent CSRF attacks
-      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+      maxAge: null, // 30 * 24 * 60 * 60 * 1000, // 30 days
     });
 
     res.redirect(origin || "/");
@@ -114,7 +114,8 @@ module.exports.getUserLogin = (req, res) => {
 };
 
 module.exports.postUserLogin = async (req, res) => {
-  const { email, password: enteredPassword } = req.body;
+  const { email, password: enteredPassword, remember } = req.body;
+  console.log(req.body.remember);
 
   const origin = req.query.redirect;
   const redirect = origin ? "?redirect=" + origin : "";
@@ -167,7 +168,7 @@ module.exports.postUserLogin = async (req, res) => {
       httpOnly: true,
       secure: process.env.NODE_ENV !== "development", // Use secure cookies in production
       sameSite: "strict", // Prevent CSRF attacks
-      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+      maxAge: !remember ? null : 30 * 24 * 60 * 60 * 1000, // 30 days
     });
 
     res.redirect(origin || "/");

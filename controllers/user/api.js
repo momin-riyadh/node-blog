@@ -7,7 +7,7 @@ const ErrorResponse = require("../../utilities/errorResponse");
 const asyncHandler = require("../../middleware/asyncHandler");
 
 module.exports.postUserRegister = asyncHandler(async (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
+  const { firstName, lastName, email, password, remember } = req.body;
 
   // VALIDATION
   let errors = {};
@@ -66,7 +66,7 @@ module.exports.postUserRegister = asyncHandler(async (req, res) => {
     httpOnly: true,
     secure: process.env.NODE_ENV !== "development", // Use secure cookies in production
     sameSite: "strict", // Prevent CSRF attacks
-    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+    maxAge: null, // 30 * 24 * 60 * 60 * 1000, // 30 days
   });
 
   res.status(201).send({
@@ -115,7 +115,7 @@ module.exports.postUserLogin = asyncHandler(async (req, res) => {
     httpOnly: true,
     secure: process.env.NODE_ENV !== "development", // Use secure cookies in production
     sameSite: "strict", // Prevent CSRF attacks
-    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+    maxAge: !remember ? null : 30 * 24 * 60 * 60 * 1000, // 30 days
   });
 
   res.status(201).send({
