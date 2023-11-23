@@ -1,6 +1,7 @@
 # Created by https://www.toptal.com/developers/gitignore/api/node,windows,jetbrains,phpstorm+all
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,windows,jetbrains,phpstorm+all
 
+ui-frontend/tools/node_modules
 ### JetBrains ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
