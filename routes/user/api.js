@@ -1,11 +1,12 @@
 const express = require("express");
 
-const { models } = require("../../models");
+const { auth } = require("../../middleware/auth");
+const userApiControllers = require("../../controllers/user/api");
 
 const router = new express.Router();
 
-router.get("/user/test", (req, res) => {
-  res.send({ message: "Test success" });
-});
+router.post("/user/register", userApiControllers.postUserRegister);
+router.post("/user/login", userApiControllers.postUserLogin);
+router.post("/user/logout", auth, userApiControllers.postUserLogout);
 
 module.exports = router;
