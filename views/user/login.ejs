@@ -2,9 +2,15 @@
 <html lang="en">
   <head>
     <%- include ('../partials/head')%>
+
+    <!--begin::Page Custom Javascript(used by this page)-->
+    <script
+      defer
+      src="/assets/js/custom/authentication/sign-in/general.js"
+    ></script>
+    <!--end::Page Custom Javascript-->
   </head>
 
-  <!--begin::Body-->
   <body id="kt_body" class="bg-body">
     <!--begin::Main-->
     <div class="d-flex flex-column flex-root">
@@ -12,7 +18,7 @@
       <div
         class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed"
         style="
-          background-image: url(/assets/media/illustrations/sketchy-1/14.png);
+          background-image: url(assets/media/illustrations/sketchy-1/14.png);
         "
       >
         <!--begin::Content-->
@@ -23,7 +29,7 @@
           <a href="../../demo1/dist/index.html" class="mb-12">
             <img
               alt="Logo"
-              src="/assets/media/logos/logo-1.svg"
+              src="assets/media/logos/logo-1.svg"
               class="h-40px"
             />
           </a>
@@ -130,12 +136,35 @@
                 >
                   <img
                     alt="Logo"
-                    src="/assets/media/svg/brand-logos/google-icon.svg"
+                    src="assets/media/svg/brand-logos/google-icon.svg"
                     class="h-20px me-3"
                   />Continue with Google</a
                 >
                 <!--end::Google link-->
-
+                <!--begin::Google link-->
+                <a
+                  href="#"
+                  class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5"
+                >
+                  <img
+                    alt="Logo"
+                    src="assets/media/svg/brand-logos/facebook-4.svg"
+                    class="h-20px me-3"
+                  />Continue with Facebook</a
+                >
+                <!--end::Google link-->
+                <!--begin::Google link-->
+                <a
+                  href="#"
+                  class="btn btn-flex flex-center btn-light btn-lg w-100"
+                >
+                  <img
+                    alt="Logo"
+                    src="assets/media/svg/brand-logos/apple-black.svg"
+                    class="h-20px me-3"
+                  />Continue with Apple</a
+                >
+                <!--end::Google link-->
               </div>
               <!--end::Actions-->
             </form>
@@ -171,18 +200,5 @@
       <!--end::Authentication - Sign-in-->
     </div>
     <!--end::Main-->
-    <script>
-      var hostUrl = "assets/";
-    </script>
-    <!--begin::Javascript-->
-    <!--begin::Global Javascript Bundle(used by all pages)-->
-    <script src="assets/plugins/global/plugins.bundle.js"></script>
-    <script src="assets/js/scripts.bundle.js"></script>
-    <!--end::Global Javascript Bundle-->
-    <!--begin::Page Custom Javascript(used by this page)-->
-    <script src="assets/js/custom/authentication/sign-in/general.js"></script>
-    <!--end::Page Custom Javascript-->
-    <!--end::Javascript-->
   </body>
-  <!--end::Body-->
 </html>
